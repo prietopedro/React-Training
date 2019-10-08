@@ -20,3 +20,12 @@
     padding-right: 8%;
     font-size: 5.0rem;
   }
+.App{
+    display: flex;
+    justify-content: center;
+}
+
+.logo-container{
+    padding-top: 2rem;
+    padding-left: 2rem;
+}
