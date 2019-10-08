@@ -22,16 +22,9 @@ function App() {
       <Logo />
       <div className="App">
         <Display />
-        <div className="allBtn">
-          <div className="BtnContainer">
-          <Specials />
-          <Numbers />
-          </div>
-          <div className="operators">
-            <Operators />
-            {/*import operators btns*/}
-          </div>
-        </div>
+        <Specials />
+        <Numbers />
+        <Operators />
       </div>
     </div>
   );

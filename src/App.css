@@ -29,28 +29,12 @@
     padding-left: 2rem;
 }
 
-.allBtn{
-    display: flex;
-}
-.left-btn{
-    width: 75%;
-    display: flex;
-}
-.BtnContainer{
-    display: flex;
-    width: 75%;
-    justify-items: space-between;
-    flex-wrap: wrap;
-    margin: 0 auto;
-}
-.BtnContainer div{
-  margin: 0.8rem;
+
+.app{
+    display: grid;
+    
 }
 
-.BtnContainer div:nth-child(10){
-    width: 10rem;
-    border-radius: 40%;
-  }
 
 .btn{
     height: 5rem;

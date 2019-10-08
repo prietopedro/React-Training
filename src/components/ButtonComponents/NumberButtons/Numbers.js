@@ -16,10 +16,10 @@ const Numbers = () => {
   console.log(numbers)
   // STEP 2 - add the imported data to state
   return (
-    <>
+    <div>
       {numberButton.map((num , index) => (<NumberButton key={index} index={index} num={num}/>)
       )}
-    </>
+    </div>
   );
 };
 
