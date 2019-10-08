@@ -30,12 +30,28 @@
 }
 
 
-.app{
+.buttons{
     display: grid;
-    
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+    grid-template-areas: 
+    "Specials Specials Specials Operators"
+    "Number Number Number Operators"
+    "Number Number Number Operators"
+    "Number Number Number Operators"
+    "Number Number Number Operators"
 }
 
+.Specials{
+    grid-area: Specials;
+}
 
+.numbers{
+    grid-area: Number;
+}
+.Operators{
+    grid-area: Operators;
+}
 .btn{
     height: 5rem;
     width: 5rem;
@@ -48,4 +64,34 @@
     color: white;
     font-weight: 500;
     font-size: 2rem;
+    cursor: pointer;
+}
+
+.btn-operators{
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    background: darkblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    font-size: 2rem;
+    cursor: pointer;
+}
+.btn-special{
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    background: lightskyblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    font-size: 2rem;
+    cursor: pointer;
 }
