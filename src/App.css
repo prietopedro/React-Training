@@ -31,26 +31,55 @@
 
 
 .buttons{
-    display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    grid-template-rows: 20% 20% 20% 20% 20%;
-    grid-template-areas: 
-    "Specials Specials Specials Operators"
-    "Number Number Number Operators"
-    "Number Number Number Operators"
-    "Number Number Number Operators"
-    "Number Number Number Operators"
+    display: flex;
+    margin: 2rem;
+    padding: 2rem;
+}
+
+
+.buttons .leftbtn{
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+}
+.buttons .leftbtn .Specials{
+    display: flex;
+}
+
+.buttons .leftbtn .Specials div{
+   margin: 0.5rem;
+}
+
+.buttons .leftbtn .numbers{
+    display: flex;
+    flex-wrap: wrap;
+}
+.buttons .leftbtn .numbers div{
+   margin: 0.5rem;
+}
+.buttons .leftbtn .numbers div:nth-child(10){
+    width: 57%;
+}
+
+
+.buttons .rightbtn{
+    width: 25%;
+}
+.buttons .rightbtn .Operators div{
+    display: flex;
+    margin: 0.9rem;
+
 }
 
 .Specials{
-    grid-area: Specials;
+
 }
 
 .numbers{
-    grid-area: Number;
+
 }
 .Operators{
-    grid-area: Operators;
+
 }
 .btn{
     height: 5rem;

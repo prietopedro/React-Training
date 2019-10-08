@@ -23,9 +23,13 @@ function App() {
       <div className="App">
         <Display />
         <div className="buttons">
-          <Specials />
-          <Numbers />
-          <Operators />
+          <div className="leftbtn">
+            <Specials />
+            <Numbers />
+          </div>
+          <div className="rightbtn">
+            <Operators />
+          </div>
         </div>
       </div>
     </div>
