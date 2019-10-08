@@ -1,10 +1,10 @@
 import React from "react";
 
-const NumberButton = (prop) => {
+const NumberButton = ({num}) => {
   return (
-    <>
-      <div>{prop.x}</div>
-    </>
+      <div className="btn">
+      {num}
+      </div>
   );
 };
 export default NumberButton;
