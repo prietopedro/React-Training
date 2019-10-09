@@ -1,10 +1,10 @@
 import React from "react";
 import Display from "../../DisplayComponents/Display"
 
-const NumberButton = ({num}) => {
+const NumberButton = (props) => {
   return (
-      <div className="btn">
-      {num}
+      <div onClick={()=>props.showValue(props.num)} className="btn">
+      {props.num}
       </div>
   );
 };

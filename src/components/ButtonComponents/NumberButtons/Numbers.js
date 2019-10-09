@@ -11,13 +11,13 @@ import { numbers } from '../../../data'
 //Import your array data to from the provided data file
 
 
-const Numbers = () => {
+const Numbers = (props) => {
   const [numberButton, changeNum] = useState(numbers);
   console.log(numbers)
   // STEP 2 - add the imported data to state
   return (
     <div className="numbers">
-      {numberButton.map((num , index) => (<NumberButton key={index} index={index} num={num}/>)
+      {numberButton.map((num , index) => (<NumberButton setDisplayValue={props.setDisplayValue} showValue={props.showValue} key={index} index={index} num={num}/>)
       )}
     </div>
   );
