@@ -13,7 +13,6 @@ import { numbers } from '../../../data'
 
 const Numbers = (props) => {
   const [numberButton, changeNum] = useState(numbers);
-  console.log(numbers)
   // STEP 2 - add the imported data to state
   return (
     <div className="numbers">

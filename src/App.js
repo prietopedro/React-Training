@@ -9,9 +9,12 @@ import Operators from "./components/ButtonComponents/OperatorButtons/Operators"
 
 // Logo has already been provided for you. Do the same for the remaining components
 import Logo from "./components/DisplayComponents/Logo";
+import { notEqual } from "assert";
 
 function App() {
   const [displayValue, setDisplayValue] = useState(0);
+  const [lastNum, setLastNum] = useState(0);
+  const [operator, setOperator] = useState("");
   // STEP 5 - After you get the components displaying using the provided data file, write your state hooks here.
   // Once the state hooks are in place write some functions to hold data in state and update that data depending on what it needs to be doing
   // Your functions should accept a parameter of the the item data being displayed to the DOM (ie - should recieve 5 if the user clicks on
@@ -37,16 +40,16 @@ function App() {
    }
  }
 
+ function operatorsfun(operatorArg){
+    if(operatorArg != "=" ){
+      setLastNum(displayValue);
+      setOperator(operatorArg);
+      setDisplayValue(0);
+    } else{
+      setDisplayValue(eval(lastNum + operator + displayValue));
+    }
 
- function operatorsfun(operator){
-   let previousNum = displayValue;
-   let operatorValue = operator;
-   if(operator == "="){
-      let currentNum = displayValue;
-      return setDisplayValue(previousNum + operatorValue + currentNum)
-   }
  }
-
 
   return (
     <div className="container">
