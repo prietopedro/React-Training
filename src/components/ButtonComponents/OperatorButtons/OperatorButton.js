@@ -1,8 +1,8 @@
 import React from "react";
 
-const OperatorButton = ({x}) => {
+const OperatorButton = (props) => {
   return (
-      <div className="btn-operators">{x.value}</div>
+      <div onClick={()=>props.operatorsfun(props.x.value)} className="btn-operators">{props.x.value}</div>
   );
 };
 

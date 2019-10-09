@@ -26,20 +26,26 @@ function App() {
  }
 
 
-function reminder(x,y){
-  return x%y;
-}
+
  function specials(value){
    if(value === "C"){
     setDisplayValue(0);
    } else if(value==="+/-"){
      setDisplayValue(displayValue*-1)
    } else if(value==="%"){
-      // setDisplayValue("Pick Another Number");
-      // if()
+      setDisplayValue(displayValue*0.01)
    }
  }
 
+
+ function operatorsfun(operator){
+   let previousNum = displayValue;
+   let operatorValue = operator;
+   if(operator == "="){
+      let currentNum = displayValue;
+      return setDisplayValue(previousNum + operatorValue + currentNum)
+   }
+ }
 
 
   return (
@@ -53,7 +59,7 @@ function reminder(x,y){
             <Numbers showValue={showValue} />
           </div>
           <div className="rightbtn">
-            <Operators />
+            <Operators operatorsfun={operatorsfun} />
           </div>
         </div>
       </div>
