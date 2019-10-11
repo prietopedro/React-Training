@@ -1,7 +1,8 @@
 import React,{useState,useEffect} from "react";
 import axios from "axios";
 import CharacterCard from "./CharacterCard"
-import {CardsBigContainer, Button} from "./StyledElements"
+import {CardsBigContainer, Button} from "./StyledElements";
+import Filter from "./Filter"
 
 
 function CharactersList(){
@@ -23,11 +24,20 @@ function CharactersList(){
         }
     };
 
+    function search(){
+        let input = document.querySelector("#search").value.toUpperCase();
+        let allCards = document.querySelectorAll(".cards");
+        let allCardsArr = Array.from(allCards);
+        allCardsArr.forEach((el)=>{
+            console.log(el.textContent.toUpperCase())
+          })
+        // et allNamesArr = l
+    }
+
     useEffect(()=>{
         axios.get(`https://swapi.co/api/people/?page=${page}`)
         .then(response=>{
             setData(response.data.results)
-            console.log(response.data.results)
         })
         .catch(error=>{
             console.log("Sorry You Got An Error")
@@ -36,6 +46,7 @@ function CharactersList(){
 
     return(
         <>
+        <Filter search={search}/>
         <CardsBigContainer>
             {data.map((character,index)=>{
                return(<CharacterCard key={index} character={character} />)
