@@ -10,6 +10,7 @@ export const CardContainer = styled.div`
 
 export const CardName = styled.h2`
     color: black;
+    text-transform: uppercase;
 `
 
 export const CardInfo = styled.p`
@@ -25,9 +26,13 @@ export const CardsBigContainer = styled.div`
 export const Button = styled.button`
     color: Black;
     border: 2px solid black;
-    padding: 1rem 4rem;
+    padding: 1rem 6rem;
     font-size: 1.5rem;
     cursor: pointer;
-    width: 25%;
     margin: 2rem;
+    background-color: Transparent;
+    font-weight: 800;
+    &:hover{
+        background: white;
+    }
 `
