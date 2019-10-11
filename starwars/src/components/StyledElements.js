@@ -21,3 +21,13 @@ export const CardsBigContainer = styled.div`
     flex-wrap: wrap;
     justify-content: space-around;   
 `
+
+export const Button = styled.button`
+    color: Black;
+    border: 2px solid black;
+    padding: 1rem 4rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    width: 25%;
+    margin: 2rem;
+`
