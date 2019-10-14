@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import MovieList from './MovieList';
 
 const Movie = (props) => {
   const [movie, setMovie] = useState({});
- 
+  console.log(movie)
+  
+
   useEffect(() => {
-    const id = 1;
+    const id = props.match.params.DataId;
+    console.log(id)
     // change ^^^ that line and grab the id from the URL
     // You will NEED to add a dependency array to this effect hook
 
@@ -43,11 +47,11 @@ const Movie = (props) => {
         </div>
         <h3>Actors</h3>
 
-        {stars.map(star => (
+        {/* {stars.map(star => (
           <div key={star} className="movie-star">
             {star}
           </div>
-        ))}
+        ))} */}
       </div>
       <div className="save-button">Save</div>
     </div>
