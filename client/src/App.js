@@ -7,9 +7,11 @@ import SavedList from './Movies/SavedList';
 
 const App = () => {
   const [savedList, setSavedList] = useState( [] );
+  const [id, setId] = useState()
   
   
   const addToSavedList = movie => {
+    // setId(props.match.params.DataId)
     setSavedList( [...savedList, movie] );
   };
 
@@ -17,7 +19,7 @@ const App = () => {
     <div>
       <SavedList list={savedList} />
       <Route path="/" exact component={MovieList} />
-      <Route path="/movies/:DataId" render={props => <Movie {...props} addToSavedList={addToSavedList} />} />
+      <Route path="/movies/:DataId" exact render={props => <Movie {...props} setId={setId}id={id} addToSavedList={addToSavedList} />} />
     </div>
   );
 };
