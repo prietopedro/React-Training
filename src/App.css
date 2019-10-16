@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -19,4 +19,51 @@
 
 .App-link {
   color: #09d3ac;
+} */
+
+.App{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
+form .form {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+}
+
+.inputs{
+  padding: 0.4rem 3rem;
+  padding-left: 0;
+  border: none;
+  border-bottom: 1px blueviolet solid; 
+}
+
+
+.btn{
+  padding: 1rem 4rem;
+  border: 1px blueviolet solid;
+  background: #fff;
+  font-weight: 800;
+  cursor: pointer;
+  color: blueviolet;
+}
+
+h1{
+  color: blueviolet
+}
+
+.cardContainer{
+  border: 2px blueviolet solid;
+  padding: 2rem;
+  margin: 2rem;
+}
+
+.bigContainer{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
