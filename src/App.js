@@ -20,7 +20,7 @@ function App() {
   const addTeamMember = member => {setTeamMembers([...teamMembers, member])}
 
 
-
+console.log(teamMembers)
   return (
     <div className="App">
       <h1>TEAM MEMBERS</h1>

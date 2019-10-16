@@ -51,14 +51,20 @@ form .form {
   color: blueviolet;
 }
 
-h1{
-  color: blueviolet
+h1, h2{
+  color: blueviolet;
+  font-weight: 900;
+}
+
+p{
+  font-style: italic;
 }
 
 .cardContainer{
   border: 2px blueviolet solid;
   padding: 2rem;
   margin: 2rem;
+  text-align: center;
 }
 
 .bigContainer{

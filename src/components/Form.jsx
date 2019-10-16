@@ -1,30 +1,40 @@
-import React from 'react';
+import React, {useState} from 'react';
+
 
 
 
 
 function Form (props){
 
+    const [formValue, setFormValue] = useState({})
+
     const submit = (e) => {
         e.preventDefault();
-        document.querySelectorAll("input").value = ""
+        props.addTeamMember(formValue);
+        setFormValue({});
     }
+
+    const change = (e) => {
+        setFormValue({...formValue,[e.target.name]:e.target.value})
+        console.log(formValue)
+    }
+
 
     return(
         <form>
 
             <div className="nameContainer form">
-                <input className="inputs" type="text" name="name" placeholder="Enter Full Name" />
+                <input onChange={change} className="inputs" type="text" name="name" placeholder="Enter Full Name" />
                 <label htmlFor="name">Name</label>
             </div>
 
             <div className="emailContainer form">
-                <input className="inputs" type="email" name="email" placeholder="Enter Email Address" />
+                <input onChange={change} className="inputs" type="email" name="email" placeholder="Enter Email Address" />
                 <label htmlFor="email">Email Address</label>
             </div>
 
             <div className="roleContainer form">
-                <input className="inputs" type="text" name="role" placeholder="Enter Your Position" />
+                <input onChange={change} className="inputs" type="text" name="role" placeholder="Enter Your Position" />
                 <label htmlFor="role">Position</label>
             </div>
 
