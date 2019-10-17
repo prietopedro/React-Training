@@ -1,7 +1,17 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import { withFormik, Form, Field } from 'formik';
+import axios from "axios";
+import {Link} from "react-router-dom"
+
 
 function MyForm(props){
+    // const [users,setUsers] = useState([])
+    let statusye = props.status;
+    useEffect(() => {
+        props.status && props.setUsers(users => [...users, props.status])
+        console.log("hey")
+      },[statusye]);
+
     return(
         <>
         <h1>Create a New Account</h1>
@@ -15,21 +25,32 @@ function MyForm(props){
 
             <Field type="text" name="Email" placeholder="Email" />
             <Field type="password" name="Password" placeholder="New Password" />
-
+            
+            {/* <Field type="checkbox" name="terms" /> */}
             <button type="submit">Sign Up</button>
+            <Link to="/Welcome">CLICK</Link>
         </Form>
         </>
     )
 }
 
-const myForm = withFormik({
+const myFormm = withFormik({
     mapPropsToValues({firstName,lastName,Email,Password}) {
-        console.log(firstName);
     return{
         firstName : firstName || "",
         lastName : lastName || "",
         Email : Email || "",
         Password : Password || "",
     }
-}})(MyForm);
-export default myForm;
+},
+handleSubmit(values, {setStatus,props}) { 
+    axios.post('https://reqres.in/api/users/', values) 
+          .then( res => { setStatus(res.data); })
+          .then( ()=>{
+            const path = `/Welcome`;
+            props.history.push(path)
+          })
+          .catch(err => console.log(err.response));
+    }
+})(MyForm);
+export default myFormm;
