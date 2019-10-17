@@ -7,6 +7,13 @@ import React, {useState, useEffect} from 'react';
 function Form (props){
 
     const [formValue, setFormValue] = useState({name: "", email: "", role: ""})
+    
+    const editBiach = () => {
+        props.teamMembers[props.editMemberIndex].name = formValue.name;
+        props.teamMembers[props.editMemberIndex].email = formValue.email;
+        props.teamMembers[props.editMemberIndex].role = formValue.role;
+      };
+
 
     const submit = (e) => {
         e.preventDefault();
@@ -14,16 +21,17 @@ function Form (props){
             props.addTeamMember(formValue);
             setFormValue({name: "", email: "", role: ""});
         } else{
-            props.editBiach(formValue);
-            setFormValue({name: "", email: "", role: ""});
+            editBiach();
             props.setEditMember("")
         }
+        setFormValue({name: "", email: "", role: ""});
     }
 
     const change = (e) => {
         setFormValue({...formValue,[e.target.name]:e.target.value})
-        console.log(formValue)
+        // console.log(formValue)
     }
+
 
     useEffect(()=>{
         setFormValue(props.editMember)

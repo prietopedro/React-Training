@@ -23,15 +23,14 @@ function App() {
   const addTeamMember = member => {setTeamMembers([...teamMembers, member])}
   
   
-  const editBiach = member => {setTeamMembers([...teamMembers.splice(0,editMemberIndex),member])};
 
 // console.log(teamMembers)
-console.log(editMember)
-console.log(editMemberIndex);
+// console.log(editMember)
+// console.log(editMemberIndex);
   return (
     <div className="App">
       <h1>TEAM MEMBERS</h1>
-      <Form editBiach={editBiach}teamMembers={teamMembers} setEditMember={setEditMember} editMember={editMember} addTeamMember={addTeamMember}  />
+      <Form editMemberIndex={editMemberIndex} teamMembers={teamMembers} setEditMember={setEditMember} editMember={editMember} addTeamMember={addTeamMember}  />
       <PlayersCards setEditMemberIndex={setEditMemberIndex} setEditMember={setEditMember} teamMembers={teamMembers} />
       
     </div>
