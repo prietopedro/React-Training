@@ -27,7 +27,9 @@
   justify-content: center;
   align-items: center;
 }
-
+form{
+  display: flex;
+}
 form .form {
   display: flex;
   flex-direction: column;
@@ -73,3 +75,14 @@ p{
   flex-wrap: wrap;
 }
 
+/* .inputs:active{
+  border: none;
+  border-bottom: 1px blueviolet solid; 
+}
+
+/* .inputs:focus{
+  padding: 0.4rem 3rem;
+  padding-left: 0;
+  border: none;
+  border-bottom: 1px blueviolet solid; 
+} */ 
