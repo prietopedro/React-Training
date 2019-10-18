@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {InputField} from "./Styling"
+import {InputField, InputContainer} from "./Styling"
 
 export default function SearchForm(props) {
   
@@ -8,10 +8,10 @@ export default function SearchForm(props) {
   } 
 
   return (
-    <section className="search-form">
+    <InputContainer className="search-form">
       <form>
-        <input type="text" onChange={onChangeHandler} placeholder="Search By Name" />
+        <InputField type="text" onChange={onChangeHandler} placeholder="Search By Name" />
       </form>
-    </section>
+    </InputContainer>
   );
 }
