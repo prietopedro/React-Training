@@ -27,7 +27,7 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ]  Explain benefit(s) using `client-side routing`?
 
-> Answer:
+> Answer: It's much faster since you arent making http requests every time the user navigates around the website. It only rerenders your app.js and show the components that you want depending on the route or URL
 
 ## Project Set Up
 
