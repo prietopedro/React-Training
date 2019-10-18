@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import SearchForm from "./SearchForm";
 import {Container, IMG, CardContainer, Name, Info, Button} from "./Styling";
 
-export default function CharacterList(props) {
+export default function Episodes(props) {
   // TODO: Add useState to track data from useEffect
   const [query, setQuery] = useState("");
 
 
-
+    console.log(props.filteredData)
 
   useEffect(() => {
     props.setFilteredData(props.data.filter(character=>{
@@ -19,12 +19,9 @@ export default function CharacterList(props) {
     <section className="character-list">
       <SearchForm setQuery={setQuery} />
       <Container>
-      {props.filteredData.map((character)=>(
-        <CardContainer key={character.id}>
-          <IMG src={character.image} />
-          <Name>{character.name}</Name>
-          <Info>{character.species}</Info>
-          <Info>{character.gender}</Info>
+      {props.filteredData.map((epi)=>(
+        <CardContainer key={epi.id}>
+          <Name>{epi.name}</Name>
         </CardContainer>
       ))}
       </Container>

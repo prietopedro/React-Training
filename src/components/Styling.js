@@ -30,6 +30,7 @@ export const CardContainer = styled.div`
     margin: 2rem;
     padding: 2rem;
     text-align: center;
+    width: 30%;
 `
 
 export const InputContainer = styled.div`
@@ -49,4 +50,11 @@ export const Info = styled.p `
     font-style: italic;
     color: #333;
     font-weight: 600;
+`
+
+export const Button = styled.a `
+    padding: 1rem 4rem;
+    color: white;
+    background: #333;
+    cursor: pointer;
 `
