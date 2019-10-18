@@ -1,16 +1,28 @@
 import React, { useEffect, useState } from "react";
+import SearchForm from "./SearchForm"
 
-export default function CharacterList() {
+export default function CharacterList(props) {
   // TODO: Add useState to track data from useEffect
+  const [query, setQuery] = useState("");
+
 
   useEffect(() => {
-    // TODO: Add API Request here - must run in `useEffect`
-    //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
-  }, []);
-
+    props.setFilteredData(props.data.filter(character=>{
+      return character.name.toLowerCase().includes(query.toLowerCase());
+    }))
+  }, [query]);
+console.log(props.data)
   return (
     <section className="character-list">
-      <h2>TODO: `array.map()` over your state here!</h2>
+      <SearchForm setQuery={setQuery} />
+      {props.filteredData.map((character)=>(
+        <div key={character.id}>
+          <img src={character.image} />
+          <h2>{character.name}</h2>
+          <p>{character.species}</p>
+          <p>{character.gender}</p>
+        </div>
+      ))}
     </section>
   );
 }

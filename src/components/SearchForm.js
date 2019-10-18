@@ -1,10 +1,17 @@
 import React, { useState } from "react";
+import {InputField} from "./Styling"
 
-export default function SearchForm() {
- 
+export default function SearchForm(props) {
+  
+  const onChangeHandler = (e) =>{
+    props.setQuery(e.target.value)
+  } 
+
   return (
     <section className="search-form">
-     // Add a search form here
+      <form>
+        <input type="text" onChange={onChangeHandler} placeholder="Search By Name" />
+      </form>
     </section>
   );
 }
