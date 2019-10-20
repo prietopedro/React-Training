@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 const UserItem = (props) => {
 
@@ -10,6 +11,10 @@ const UserItem = (props) => {
                 <div><a href={html_url} className="btn btn-dark my-1">More</a></div>
             </div>
         )
+}
+
+UserItem.propTypes = {
+    user: PropTypes.object.isRequired,
 }
 
 export default UserItem
