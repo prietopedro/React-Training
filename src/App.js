@@ -21,10 +21,20 @@ class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      todos: initialData
+      todos: []
     }
 
   }
+
+  componentDidMount(){
+    this.setState({
+      todos: (JSON.parse(localStorage.getItem("todos")) === null) ? [] : JSON.parse(localStorage.getItem("todos"))
+    })
+  }
+  componentDidUpdate(){
+    localStorage.setItem("todos",JSON.stringify(this.state.todos))
+  }
+  
 
   addTodoItem = (str) => {
     let newObj = {
