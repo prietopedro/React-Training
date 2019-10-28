@@ -35,7 +35,11 @@ class App extends React.Component {
 
   clearList = (e) => {
     e.preventDefault();
-    this.setState({todos: []})
+    this.setState({
+      todos: this.state.todos.filter(todo=>{
+        return todo.completed === false
+      }) 
+    })
   }
 
 
@@ -53,7 +57,6 @@ class App extends React.Component {
         }
       })
     })
-    console.log(this.state.todos)
   }
   // you will need a place to store your state in this component.
   // design `App` to be the parent component of your application.
