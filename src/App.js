@@ -4,11 +4,15 @@ import Navbar from "./components/layout/Navbar";
 import Users from "./components/users/Users";
 import axios from "axios"
 import Search from "./components/users/Search"
+import Alert from "./components/layout/Alert"
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom"
+import About from "./components/pages/About"
 
 class App extends Component {
   state={
     users: [],
     loading: false,
+    alert: null
   }
 
 
@@ -26,17 +30,43 @@ class App extends Component {
     this.setState({users:res.data.items , loading:false})
   }
 
-  render() {
+  clearUsers = () =>{
+    this.setState({users: [], loading: false})
+  }
 
+  setAlert = (msg,type) =>{
+    this.setState({alert: {msg, type}})
+    setTimeout(()=>this.setState({alert: null}), 5000)
+  }
+
+
+
+  render() {
+    const {users, loading} = this.state;
     return(
+      <Router>
       <div className="App">
         <Navbar  />
         <div className="container">
-          <Search searchUsers={this.searchUsers}/>
-          <Users users={this.state.users} loading={this.state.loading}/>
+          <Alert alert={this.state.alert} />
+          <Switch>
+            <Route exact path="/" render={props=>(
+              <>
+              <Search 
+              searchUsers={this.searchUsers} 
+              clearUsers={this.clearUsers} 
+              showClear={(users.length > 0) ? true : false}
+              setAlert={this.setAlert}
+              />
+              <Users users={users} loading={loading}/>
+              </>
+            )}/>
+            <Route exact path="/about" component={About} />
+          </Switch>
         </div>
 
       </div>
+      </Router>
     )
   }
 }
