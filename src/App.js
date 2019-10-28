@@ -23,7 +23,8 @@ class App extends React.Component {
     super();
     this.state = {
       todos: [],
-      filteredTodos: []
+      filteredTodos: [],
+      isFiltered: false
     }
 
   }
@@ -31,7 +32,7 @@ class App extends React.Component {
   componentDidMount(){
     this.setState({
       todos: (JSON.parse(localStorage.getItem("todos")) === null) ? [] : JSON.parse(localStorage.getItem("todos")),
-      filteredTodos: (JSON.parse(localStorage.getItem("todos")) === null) ? [] : JSON.parse(localStorage.getItem("todos"))
+      filteredTodos: (JSON.parse(localStorage.getItem("todos")) === null) ? [] : JSON.parse(localStorage.getItem("todos")),
     })
   }
 
@@ -46,13 +47,16 @@ class App extends React.Component {
       id: new Date(),
       completed: false
     }
-    this.setState({todos : [...this.state.todos, newObj]})
+    this.setState({todos : [...this.state.todos, newObj], filteredTodos : [...this.state.filteredTodos, newObj]})
   }
 
   clearList = (e) => {
     e.preventDefault();
     this.setState({
       todos: this.state.todos.filter(todo=>{
+        return todo.completed === false
+      }),
+      filteredTodos: this.state.todos.filter(todo=>{
         return todo.completed === false
       }) 
     })
@@ -71,18 +75,31 @@ class App extends React.Component {
         } else{
           return todo;
         }
-      })
+      }),
+      filteredTodos: this.state.todos.map(todo=>{
+        if (todo.id===id){
+          return {
+            task: todo.task,
+            id: todo.id,
+            completed: !todo.completed
+          }
+        } else{
+          return todo;
+        }
+      }),
+      
     })
   }
 
 
-  // search = (str) => {
-  //   this.setState({
-  //     filteredTodos: this.state.todos.filter(todo=>{
-  //       return todo.task.toUpperCase().includes(str.toUpperCase())
-  //     })
-  //   })
-  // }
+  search = (str) => {
+    this.setState({
+      filteredTodos: this.state.todos.filter(todo=>{
+        return todo.task.toUpperCase().includes(str.toUpperCase())
+      }),
+      isFiltered: true
+    });
+  }
   // you will need a place to store your state in this component.
   // design `App` to be the parent component of your application.
   // this component is going to take care of state, and any change handlers you need to work with your state
@@ -93,7 +110,7 @@ class App extends React.Component {
         <TodoContainer>
           <SearchForm search={this.search} />
           <TodoForm addTodoItem={this.addTodoItem} clearList={this.clearList} />
-          <TodoList todos={this.state.todos} isCompleted={this.isCompleted} />
+          <TodoList todos={this.state.filteredTodos} isCompleted={this.isCompleted} />
         </TodoContainer>
       </BigContainer>
     );

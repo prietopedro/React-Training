@@ -5,25 +5,33 @@ export default class SearchForm extends Component {
     constructor(){
         super();
         this.state = {
-            task: ""
+            inputValue: ""
         }
     }
 
     handleChange = (e) => {
         this.setState({
-            task: e.target.value
+            inputValue: e.target.value
         })
-        // this.props.search(this.state.task)
+        // this.props.search(this.state.inputValue)
     }
-    onSubmit = (e) => {
-        e.preventDefault();
-        this.props.search(this.state.task)
+
+    componentDidUpdate(previusProps, previousState){
+        if(previousState.inputValue !== this.state.inputValue){
+            this.props.search(this.state.inputValue)
+        } else{
+            return null
+        }
     }
+    // onSubmit = (e) => {
+    //     e.preventDefault();
+    //     this.props.search(this.state.task)
+    // }
     render() {
         return (
                 <FormContainer>
-                    <Input type="text" onChange={this.handleChange} value={this.state.task} placeholder="Search" />
-                    <Btn onClick={this.onSubmit}>Search</Btn>
+                    <Input type="text" onChange={this.handleChange} value={this.state.inputValue} placeholder="Search" />
+
                 </FormContainer>
         )
     }
