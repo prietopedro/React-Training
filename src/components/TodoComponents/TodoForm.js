@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {FormContainer, Input, Btn} from "../../style"
 
 export default class TodoForm extends Component {
     constructor(props){
@@ -21,13 +22,11 @@ export default class TodoForm extends Component {
     }
     render() {
         return (
-            <div>
-                <form>
-                    <input type="text" onChange={this.handleChange} value={this.state.task} placeholder="Add A Todo" />
-                    <button onClick={this.handleSubmit}>Add Todo</button>
-                    <button onClick={this.props.clearList}>Clear List</button>
-                </form>
-            </div>
+                <FormContainer>
+                    <Input type="text" onChange={this.handleChange} value={this.state.task} placeholder="Add A Todo" />
+                    <Btn onClick={this.handleSubmit}>Add Todo</Btn>
+                    <Btn onClick={this.props.clearList}>Clear List</Btn>
+                </FormContainer>
         )
     }
 }
