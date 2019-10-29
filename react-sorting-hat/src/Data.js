@@ -1,4 +1,4 @@
-import React from "react";
+
 export const Data = [
     {
         question: "Which Candy Would You Choose?",
