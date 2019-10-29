@@ -22,6 +22,8 @@ export default class Questions extends Component {
             return total + Number(current)
         },0)
         this.props.getTotalPoints(total)
+        this.props.history.push("/House")
+        
 
     }
 
