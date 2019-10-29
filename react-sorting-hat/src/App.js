@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Route} from "react-router-dom"
 import Home from "./components/home";
 import Questions from "./components/Questions"
 import {Data} from "./Data"
+import {Houses} from "./Houses"
 import House from "./components/House"
 
 class App extends Component {
@@ -12,7 +13,7 @@ class App extends Component {
     this.state = {
       questions: Data,
       points: 0,
-      house: ""
+      house: {}
     }
   }
   getTotalPoints = (num) => {
@@ -20,15 +21,21 @@ class App extends Component {
   }
 
   getHouse = () => {
+    let currentHouse = ""
     if(this.state.points >= 6 && this.state.points <= 10){
-      this.setState({house: "hufflepuff"})
+      currentHouse = "hufflepuff"
   } else if(this.state.points >= 11 && this.state.points <= 15){
-      this.setState({house: "ravenclaw"})
+      currentHouse = "ravenclaw"
   } else if(this.state.points >= 16 && this.state.points <= 20){
-      this.setState({house: "gryfinndor"})
+      currentHouse = "gryfinndor"
   } else{
-      this.setState({house: "slytherin"})
+      currentHouse = "slytherin"
   }
+    this.setState({
+      house: Houses.find(x=>{
+        return x.name.toUpperCase() === currentHouse.toUpperCase()
+      })
+    })
   }
   componentDidUpdate(previousProps, previousState){
     if(previousState.points !== this.state.points){

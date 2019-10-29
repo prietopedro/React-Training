@@ -19,18 +19,19 @@ export default class House extends Component {
         // } else{
         //     this.setState({house: "slytherin"})
         // }
-        axios
-        .get(`http://hp-api.herokuapp.com/api/characters/house/${this.props.house}` )
-        .then(res=>{
-            console.log(res)
-        })
+        // axios
+        // .get(`http://hp-api.herokuapp.com/api/characters/house/${this.props.house}` )
+        // .then(res=>{
+        //     console.log(res)
+        // })
     }
     
 
     render() {
         return (
             <div>
-               <h1>Congratulations, You Now Belong To The <br/>{this.props.house} House</h1> 
+               <h1>Congratulations, You Now Belong To The <br/>{this.props.house.name} House</h1> 
+               <p>{this.props.house.about}</p>
             </div>
         )
     }
