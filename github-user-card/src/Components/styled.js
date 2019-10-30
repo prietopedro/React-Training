@@ -12,7 +12,7 @@ export const NavContainer = styled.nav `
 `
 
 export const Logo = styled.h3 `
-    margin: 0
+    margin: 0;
     font-weight: 700;
     font-size: 1.5rem;
 `
@@ -21,7 +21,7 @@ export const Logo = styled.h3 `
 export const Card = styled.div `
     border: 1px #333 solid;
     background: linear-gradient(2deg, #3C8CE7 10%, #00EAFF 100%);
-    color: white
+    color: white;
     width: 15%;
     display: flex;
     flex-direction: column;
