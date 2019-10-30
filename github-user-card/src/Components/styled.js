@@ -4,7 +4,7 @@ import {Link} from "react-router-dom"
 //Nav
 export const NavContainer = styled.nav `
     height: 3.5rem;
-    background: linear-gradient(135deg, #3C8CE7 10%, #00EAFF 100%);
+    background: linear-gradient(2deg, #3C8CE7 10%, #00EAFF 100%);
     color: white;
     display: flex;
     justify-content: center;
@@ -20,7 +20,7 @@ export const Logo = styled.h3 `
 // CARDS
 export const Card = styled.div `
     border: 1px #333 solid;
-    background: #3C8CE7;
+    background: linear-gradient(2deg, #3C8CE7 10%, #00EAFF 100%);
     color: white
     width: 15%;
     display: flex;
@@ -54,5 +54,5 @@ export const CardContainer = styled.div `
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    
+
 `
