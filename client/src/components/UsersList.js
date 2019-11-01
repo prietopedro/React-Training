@@ -12,7 +12,7 @@ export default function UsersList({users,loading}) {
     return (
         <div>
             <button onClick={setDarkMode}>Change Colors</button>
-            {users.map(user=><User user={user} key={user.id} />)}
+            {users.map(user=><User darkMode={darkMode} user={user} key={user.id} />)}
         </div>
     )
 }

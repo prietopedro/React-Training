@@ -11,7 +11,7 @@ export default class App extends Component {
       loading: false,
     }
   }
-  
+
   componentDidMount(){
     this.setState({loading:true})
     axios.get("http://localhost:5000/api/players")
@@ -19,7 +19,6 @@ export default class App extends Component {
   }
 
   render() {
-    console.log(this.state.users)
     return (
       <div>
         <UsersList users={this.state.users} loading={this.state.loading} />

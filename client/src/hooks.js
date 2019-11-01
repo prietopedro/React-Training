@@ -12,7 +12,6 @@ export const useLocalStorage = (key,initialData) => {
     })
 
     const settingLocalStorage = (value) => {
-        console.log(value)
         setLocalStorageData(value)
         localStorage.setItem(key,JSON.stringify(value))
     }
@@ -27,7 +26,6 @@ export const useDarkMode = (initialData) => {
 
     const changeColors = (e) => {
         e.preventDefault()
-        console.log("it's running")
         setDarkMode(!darkMode)
     } 
     return [darkMode,changeColors]

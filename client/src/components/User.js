@@ -1,8 +1,8 @@
 import React from 'react'
 
-export default function User({user}) {
+export default function User({user,darkMode}) {
     return (
-        <div>
+        <div className={(darkMode) ? "darkMode" : ""}>
             <h1>{user.name}</h1>
             <h3>{user.country}</h3>
         </div>
