@@ -1,5 +1,6 @@
 import React from 'react'
 import {useDarkMode} from "../hooks"
+import Chart from "./Chart"
 
 import User from "./User"
 
@@ -12,6 +13,7 @@ export default function UsersList({users,loading}) {
     return (
         <div>
             <button onClick={setDarkMode}>Change Colors</button>
+            <Chart users={users} />
             {users.map(user=><User darkMode={darkMode} user={user} key={user.id} />)}
         </div>
     )

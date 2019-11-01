@@ -4,15 +4,15 @@ import App from './App';
 
 const {render} = rtl
 test('renders without crashing', () => {
-  rtl.render(<App />);
+  render(<App />);
 });
 
 test('there is btn', ()=>{
-  const {getByText} = rtl.render(<App />)
+  const {getByText} = render(<App />)
   getByText(/loading/i)
 })
 
 test('i hate this',()=>{
-  const {getByText} = rtl.render(<App />)
+  const {getByText} = render(<App />)
   getByText(/^loading...$/i)
 })
