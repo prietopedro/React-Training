@@ -2,7 +2,6 @@ import {useState} from "react"
 
 export const useLocalStorage = (key,initialData) => {
     const [localStorageData, setLocalStorageData] = useState(()=>{
-        console.log(localStorage.getItem(key))
         if(localStorage.getItem(key)){
             return JSON.parse(localStorage.getItem(key))
         } else{
