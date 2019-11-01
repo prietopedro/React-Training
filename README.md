@@ -23,9 +23,13 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit the `ANSWERS.md` file to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] Why would you use class component over function components (removing hooks from the question)?
+    I woudn't, if there were no hooks I would have to since functional components didn't use to have access to useEffect or state.
 - [ ] Name three lifecycle methods and their purposes.
+    constructor(Make the first object containing all your state and lifecicle hooks) - render(what chanegs the virtual dom) -compoentDidMount(Right after the component does the initial render, it will cause the render to run again) componentdidupdate(will wait for a change in prop or state to change and cause the render to redender everytime something changes, depending on your if statements)
 - [ ] What is the purpose of a custom hook?
+    Reusable dynamic logic through your app, if you do multiple axios request you might want a custom hook to make your life easier, or when having multiple forms etc 
 - [ ] Why is it important to test our apps?
+    To check if something is working right 
 
 ## Project Set Up
 
