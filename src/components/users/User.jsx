@@ -5,6 +5,7 @@ import {Link} from "react-router-dom"
 import GithubContext from "../../context/github/githubContext"
 
 
+
 const User = ({match}) => {
     const githubContext = useContext(GithubContext)
     const {getUser , loading , user, getUserRepos , repos } = githubContext
@@ -15,6 +16,7 @@ const User = ({match}) => {
         // eslint-disable-next-line
     },[])
 
+        const chart = `http://ghchart.rshah.org/3C8CE7/${match.params.user}`
         const {name,avatar_url,location,bio,blog,login,html_url,followers,following,public_repos,public_gist,hirable, company} = user
 
         if(loading) return <Spinner />
@@ -57,9 +59,11 @@ const User = ({match}) => {
                 <div className="card text-center">
                     <div className="badge badge-primary">Followers: {followers}</div>
                     <div className="badge badge-success">Following: {following}</div>
-                    <div className="badge badge-light">Public Repos: {public_repos}</div>
-                    <div className="badge badge-dark">Public Gists: {public_gist}</div>
+                    <div className="badge badge-dark">Public Repos: {public_repos}</div>
                 </div>   
+                <div className="card text-center">
+                    <img src={chart} alt=""/>
+                </div>
                 <Repos repos={repos}/>      
             </>
         )

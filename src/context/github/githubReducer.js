@@ -1,4 +1,5 @@
 import {
+    INITIAL_USERS,
     SEARCH_USERS,
     SET_LOADING,
     CLEAR_USERS,
@@ -8,6 +9,12 @@ import {
 
 export default (state , action) => {
     switch(action.type){
+        case INITIAL_USERS:
+            return {
+                ...state,
+                users: action.payload,
+                loading: false
+            }
         case SEARCH_USERS:
             return {
                 ...state,

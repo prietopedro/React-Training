@@ -3,6 +3,7 @@ import axios from 'axios';
 import GithubContext from "./githubContext"
 import GithubReducer from "./githubReducer"
 import {
+    INITIAL_USERS,
     SEARCH_USERS,
     SET_LOADING,
     CLEAR_USERS,
@@ -20,6 +21,8 @@ if(process.env.NODE_ENV !== 'production'){
     githubClientId = process.env.GITHUB_CLIENT_ID;
     githubClientSecret = process.env.GITHUB_CLIENT_SECRET;
 }
+console.log(githubClientId)
+console.log(githubClientSecret)
 
 const GithubState = props => {
     const initialState = {
@@ -30,6 +33,16 @@ const GithubState = props => {
     }
 
     const [state , dispatch] = useReducer(GithubReducer, initialState);
+
+    //Initial Users
+    const initialUsers = async text => {
+        setLoading();
+        let res = await axios.get(`https://api.github.com/users`);
+        dispatch({
+            type: INITIAL_USERS,
+            payload: res.data
+        })
+    }
 
     // Search Users
     const searchUsers = async text => {
@@ -67,6 +80,7 @@ const GithubState = props => {
         user: state.user,
         repos: state.repos,
         loading: state.loading,
+        initialUsers,
         searchUsers,
         clearUsers,
         getUser,

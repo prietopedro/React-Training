@@ -5,9 +5,7 @@ export default function Alert() {
     const {alert} = useContext(AlertContext)
     return (
         alert !== null && (
-            <div className={`alert alert-${alert.type}`}>
-                <i className="fas fa-info-circle">{alert.msg}</i>
-            </div>
+            <p style={{margin: "0", padding: "0", lineHeight: "0.3"}} className="text-danger">{alert}</p>
         )
     )
 }

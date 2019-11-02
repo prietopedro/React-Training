@@ -20,7 +20,7 @@ const App = () => {
           <div className="App">
             <Navbar  />
             <div className="container">
-              <Alert/>
+              {/* <Alert/> */}
               <Switch>
                 <Route exact path="/" component={Home}/>
                 <Route exact path="/about" component={About} />
