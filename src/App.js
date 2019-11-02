@@ -1,74 +1,39 @@
-import React,{Component} from 'react';
+import React from 'react';
 import './App.css';
 import Navbar from "./components/layout/Navbar";
-import Users from "./components/users/Users";
-import axios from "axios"
-import Search from "./components/users/Search"
+import Home from "./components/pages/Home"
+import User from "./components/users/User";
 import Alert from "./components/layout/Alert"
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom"
 import About from "./components/pages/About"
+import NotFound from "./components/pages/Notfound"
 
-class App extends Component {
-  state={
-    users: [],
-    loading: false,
-    alert: null
-  }
+import GithubState from "./context/github/GithubState"
+import AlertState from "./context/alert/AlertState"
 
+const App = () => {
 
-  async componentDidMount(){
-    this.setState({loading:true});
-    const res = await axios.get(`https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_ID}&client_secret=${process.env.REACT_APP_GITHUB_SECRET }`);
-    this.setState({users:res.data,loading:false})
-  }
-
-  // Search GitHub Users
-  searchUsers = async text => {
-    console.log(text);
-    this.setState({loading:true});
-    const res = await axios.get(`https://api.github.com/search/users?q=${text}&client_id=${process.env.REACT_APP_GITHUB_ID}&client_secret=${process.env.REACT_APP_GITHUB_SECRET }`);
-    this.setState({users:res.data.items , loading:false})
-  }
-
-  clearUsers = () =>{
-    this.setState({users: [], loading: false})
-  }
-
-  setAlert = (msg,type) =>{
-    this.setState({alert: {msg, type}})
-    setTimeout(()=>this.setState({alert: null}), 5000)
-  }
-
-
-
-  render() {
-    const {users, loading} = this.state;
     return(
-      <Router>
-      <div className="App">
-        <Navbar  />
-        <div className="container">
-          <Alert alert={this.state.alert} />
-          <Switch>
-            <Route exact path="/" render={props=>(
-              <>
-              <Search 
-              searchUsers={this.searchUsers} 
-              clearUsers={this.clearUsers} 
-              showClear={(users.length > 0) ? true : false}
-              setAlert={this.setAlert}
-              />
-              <Users users={users} loading={loading}/>
-              </>
-            )}/>
-            <Route exact path="/about" component={About} />
-          </Switch>
-        </div>
+      <GithubState>
+        <AlertState>
+          <Router>
+          <div className="App">
+            <Navbar  />
+            <div className="container">
+              <Alert/>
+              <Switch>
+                <Route exact path="/" component={Home}/>
+                <Route exact path="/about" component={About} />
+                <Route exact path="/:user" component={User} />
+                <Route component={NotFound} />
+              </Switch>
+            </div>
 
-      </div>
-      </Router>
+          </div>
+          </Router>
+        </AlertState>
+      </GithubState>
     )
   }
-}
 
 export default App;
