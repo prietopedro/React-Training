@@ -4,18 +4,12 @@ import {CartContext} from '../context/Contexts'
 // Components
 import Item from './ShoppingCartItem';
 
-const ShoppingCart = props => {
-	const { cart } = useContext(CartContext)
+const ShoppingCart = () => {
+	const { cart , getCartTotal } = useContext(CartContext)
 
 	useEffect(()=>{
 		localStorage.setItem("Items",JSON.stringify(cart))
 	},[cart])
-
-	const getCartTotal = () => {
-		return cart.reduce((acc, value) => {
-			return acc + value.price;
-		}, 0).toFixed(2);
-	};
 
 	return (
 		<div className="shopping-cart">

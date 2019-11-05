@@ -9,6 +9,7 @@ const CartState = (props) => {
         return [];
     });  
 
+    
     const addItem = item => {
         setCart([...cart, item])
     };
@@ -18,13 +19,20 @@ const CartState = (props) => {
         setCart(cart.filter(product => product.id !== id))
     };
 
+    const getCartTotal = () => {
+		return cart.reduce((acc, value) => {
+			return acc + value.price;
+		}, 0).toFixed(2);
+	};
+
 
 
     return (
         <CartContext.Provider value={{
             cart,
             addItem,
-            removeItem
+            removeItem,
+            getCartTotal
             }}>
             {props.children}
         </CartContext.Provider>

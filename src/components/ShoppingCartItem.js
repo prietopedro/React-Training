@@ -3,7 +3,7 @@ import {CartContext} from '../context/Contexts'
 
 const Item = props => {
 	const { removeItem } = useContext(CartContext)
-	console.log(props.id)
+
 	return (
 		<div className="shopping-cart_item">
 			<img src={props.image} alt={`${props.title} book`} />
