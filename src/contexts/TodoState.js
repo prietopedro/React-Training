@@ -1,6 +1,6 @@
 import React,{useReducer} from "react"
 import {TodoContext} from "./context"
-import {ADD_TODO} from "./types"
+import {ADD_TODO,MARK_COMPLETE,CLEAR_TODOS} from "./types"
 import TodoReducer from "./TodoReducer"
 
 export default (props) => {
@@ -16,15 +16,25 @@ export default (props) => {
     const [state,dispatch] = useReducer(TodoReducer,initialState)
 
     const addTodo = (todoName) => {
-        const newTodo = {item: todoName, completed: false, id: new Date}
-        dispatch({type: ADD_TODO , payload: newTodo})
+        dispatch({type: ADD_TODO , payload: todoName})
+    }
+
+    const markComplete = (id) => {
+        dispatch({type: MARK_COMPLETE, payload: id})
+    }
+
+    const clearTodos = (e) => {
+        e.preventDefault();
+        dispatch({type: CLEAR_TODOS})
     }
 
 
     return (
         <TodoContext.Provider value={{
             todos: state.todos,
-            addTodo
+            addTodo,
+            markComplete,
+            clearTodos
         }}>
             {props.children}
         </TodoContext.Provider>
