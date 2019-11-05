@@ -1,8 +1,8 @@
 import React,{useContext} from 'react';
-import ProductContext from '../context/ProductContext'
+import {CartContext} from '../context/Contexts'
 
 const Item = props => {
-	const { removeItem } = useContext(ProductContext)
+	const { removeItem } = useContext(CartContext)
 	console.log(props.id)
 	return (
 		<div className="shopping-cart_item">

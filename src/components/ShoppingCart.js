@@ -1,11 +1,11 @@
 import React,{useContext, useEffect} from 'react';
-import ProductContext from '../context/ProductContext'
+import {CartContext} from '../context/Contexts'
 
 // Components
 import Item from './ShoppingCartItem';
 
 const ShoppingCart = props => {
-	const { cart } = useContext(ProductContext)
+	const { cart } = useContext(CartContext)
 
 	useEffect(()=>{
 		localStorage.setItem("Items",JSON.stringify(cart))
