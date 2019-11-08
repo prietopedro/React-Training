@@ -17,6 +17,8 @@ export const SMURF_PUT_START = "SMURF_PUT_START"
 export const SMURF_PUT_SUCCESS = "SMURF_PUT_SUCCESS"
 export const SMURF_PUT_FAIL = "SMURF_PUT_FAIL"
 
+export const SET_EDITING = "SET_EDITING"
+
 export const smurfsGet = () => dispatch => {
     dispatch({type:SMURF_GET_START})
     axios
@@ -40,3 +42,16 @@ export const smurfDelete = (id) => dispatch => {
     .then(res=>dispatch({type:SMURF_DELETE_SUCCESS, payload:res.data}))
     .catch(err=>dispatch({type:SMURF_DELETE_FAIL, payload:err.message}))
 }
+
+export const setEdit = smurf => {
+    return ({type: SET_EDITING , payload: smurf})
+}
+
+export const smurfEdit = smurf => dispatch => {
+    dispatch({type:SMURF_PUT_START})
+    axios
+    .put(`http://localhost:3333/smurfs/${smurf.id}`,smurf)
+    .then(res=>dispatch({type:SMURF_PUT_SUCCESS, payload:res.data}))
+    .catch(err=>dispatch({type:SMURF_PUT_FAIL, payload:err.message}))
+}
+
