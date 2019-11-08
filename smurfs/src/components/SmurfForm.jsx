@@ -22,27 +22,22 @@ function SmurfForm(props) {
         
         if(!props.isEditing){
             props.smurfPost(formValues)
-            setFormValues({
-                name: "",
-                age: "",
-                height: ""
-            })
         } else {
             props.smurfEdit(formValues)
-            setFormValues({
-                name: "",
-                age: "",
-                height: ""
+        }
+        setFormValues({
+            name: "",
+            age: "",
+            height: ""
         })
-    }
     }
     return (
         <div>
-            <form>
-                <input name="name" onChange={handleChange} value={formValues.name} placeholder="Enter Name" />
-                <input name="age" onChange={handleChange} value={formValues.age} placeholder="Enter Age" />
-                <input name="height" onChange={handleChange} value={formValues.height} placeholder="Enter Height" />
-                <button onClick={handleSubmit}>{(props.isEditing) ? "Edit" : "Submit"}</button>
+            <form className="form">
+                <input className="input" name="name" onChange={handleChange} value={formValues.name} placeholder="Enter Name" />
+                <input className="input" name="age" onChange={handleChange} value={formValues.age} placeholder="Enter Age" />
+                <input className="input" name="height" onChange={handleChange} value={formValues.height} placeholder="Enter Height" />
+                <button className="btn" onClick={handleSubmit}>{(props.isEditing) ? "Edit" : "Submit"}</button>
             </form>
         </div>
     )

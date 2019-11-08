@@ -14,14 +14,21 @@ function SmurfCard(props) {
     }
 
     return (
-        <div style={{border: "1px solid black" , marginBottom: "2rem"}}>
+        <div style={container}>
             <h2>{props.smurf.name}</h2>
             <h2>{props.smurf.age}</h2>
             <h2>{props.smurf.height}</h2>
-            <button onClick={editSmurf}>EDIT</button>
-            <button onClick={deleteSmurf}>DELETE</button>
+            <button className="btn" onClick={editSmurf}>EDIT</button>
+            <button className="btn" onClick={deleteSmurf}>DELETE</button>
         </div>
     )
 }
 
+
+const container = {
+    border: "1px solid black",
+    width: "30%",
+    margin: "2rem auto",
+    padding: "2rem"
+}
 export default connect(null,{smurfDelete,setEdit})(SmurfCard)
