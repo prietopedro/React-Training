@@ -1,9 +1,11 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
+
 import "./menu-item.scss"
 
-export default function MenuItem({section}) {
+function MenuItem({section , history}) {
     return (
-        <div className={`${section.size} menu-item`}>
+        <div className={`${section.size} menu-item`} onClick={()=>history.push(`/shop/${section.title}`)}>
             <div style={{backgroundImage: `url(${section.imageUrl})`}} className='background-image'></div>
                 <div className="content">
                     <h1 className="title">{section.title.toUpperCase()}</h1>
@@ -13,3 +15,4 @@ export default function MenuItem({section}) {
     )
 }
 
+export default withRouter(MenuItem)
