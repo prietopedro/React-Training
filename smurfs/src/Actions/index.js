@@ -16,3 +16,11 @@ export const smurfsGet = () => dispatch => {
     .then(res=>dispatch({type:SMURF_GET_SUCCESS, payload:res.data}))
     .catch(err=>dispatch({type:SMURF_GET_FAIL, payload: err.message}))
 }
+
+export const smurfPost = smurf => dispatch => {
+    dispatch({type:SMURF_POST_START})
+    axios
+    .post("http://localhost:3333/smurfs",smurf)
+    .then(res=>dispatch({type:SMURF_POST_SUCCESS, payload:res.data}))
+    .catch(err=>dispatch({type:SMURF_POST_FAIL, payload: err.message}))
+}
