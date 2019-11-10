@@ -1,10 +1,11 @@
 import React,{ useState } from 'react'
+import { withRouter } from "react-router-dom"
 import FormInput from '../FormInput/FormInput'
 import CustomButton from "../CustomButton/CustomButton"
-import {signInWithGoogle} from "../../firebase/firebase"
+import { signInWithGoogle, auth} from "../../firebase/firebase"
 import "./signin.scss"
 
-export default function SignIn() {
+function SignIn({history}) {
     const [ formValues , setFormValues ] = useState({
         email: "",
         password: ""
@@ -14,14 +15,23 @@ export default function SignIn() {
         setFormValues({...formValues, [e.target.name] : e.target.value})
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        setFormValues({
-            email: "",
-            passign: ""
-        })
+        const { email , password } = formValues
+
+        try{
+            await auth.signInWithEmailAndPassword(email,password)
+            setFormValues({
+                email: "",
+                password: ""
+            })
+            history.push("/")
+        } catch(error){
+            console.log(error)
+        }
     }
 
+    console.log(formValues)
     return (
         <div className="sign-in">
             <h2>I already have an account</h2>
@@ -38,3 +48,5 @@ export default function SignIn() {
         </div>
     )
 }
+
+export default withRouter(SignIn)
