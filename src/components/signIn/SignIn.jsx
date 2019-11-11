@@ -25,7 +25,6 @@ function SignIn({history}) {
                 email: "",
                 password: ""
             })
-            history.push("/")
         } catch(error){
             console.log(error)
         }
