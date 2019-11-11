@@ -31,7 +31,6 @@ function SignIn({history}) {
         }
     }
 
-    console.log(formValues)
     return (
         <div className="sign-in">
             <h2>I already have an account</h2>
