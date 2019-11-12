@@ -1,7 +1,5 @@
 import React from 'react'
-import { Link , NavLink } from 'react-router-dom'
 import { ReactComponent as Logo } from "../../assets/crown.svg"
-import "./header.styles.scss"
 import { auth } from "../../firebase/firebase"
 import { connect } from 'react-redux'
 
@@ -12,23 +10,26 @@ import { createStructuredSelector } from 'reselect'
 import { selectCartHidden } from "../../redux/Cart/CartSelectors"
 import { selectCurrentUser } from "../../redux/User/UserSelectors"
 
+
+import {HeaderContainer,LogoContainer,OptionsContainer,OptionLink,OptionDiv} from "./HeaderStyles"
+
 function Header({ currentUser , hidden }) {
     return (
-        <div className='header'>
-            <Link className='logo-container' to="/">
+        <HeaderContainer>
+            <LogoContainer to="/">
                 <Logo className='logo'/>
-            </Link>
-            <div className='options'>
-                <NavLink className='option' exact to='/'>HOME</NavLink>
-                <NavLink className='option' exact to='/shop'>SHOP</NavLink>
-                <NavLink className='option' exact to='/contact'>CONTACT</NavLink>
+            </LogoContainer>
+            <OptionsContainer>
+                <OptionLink exact to='/'>HOME</OptionLink>
+                <OptionLink exact to='/shop'>SHOP</OptionLink>
+                <OptionLink exact to='/contact'>CONTACT</OptionLink>
                 {
-                    currentUser ? <div className="option" onClick={()=> auth.signOut()}>SIGN OUT</div> : <NavLink to="/signin">SIGN IN</NavLink>
+                    currentUser ? <OptionDiv onClick={()=> auth.signOut()}>SIGN OUT</OptionDiv> : <OptionLink to="/signin">SIGN IN</OptionLink>
                 }
                 <CartIcon />
-            </div>
+            </OptionsContainer>
             {hidden ? null : <CartDropDown />}
-        </div>
+        </HeaderContainer>
     )
 }
 
