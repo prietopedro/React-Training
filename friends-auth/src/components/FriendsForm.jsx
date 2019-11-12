@@ -1,22 +1,27 @@
-import React,{useState} from 'react'
-import AxiosWithAuth from "../utils/AxiosWithAuth"
+import React,{useState,useContext} from 'react'
+import {FriendListContext} from "../context"
 
 export default function FriendsForm() {
+    const {addFriend} = useContext(FriendListContext)
     const values = {
         name: "",
         age: "",
         email: ""
     }
     const [formValues,setFormValues] = useState(values)
+
     const handleChange = e => {
         setFormValues({...formValues, [e.target.name]:e.target.value})
     }
+
     const submitForm = e => {
         e.preventDefault();
-        AxiosWithAuth().post('/api/friends',formValues).then()
+        addFriend(formValues)
         setFormValues(values)
     }
+
     const {name,age,email} = formValues
+    
     return (
         <div>
             <form>

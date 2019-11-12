@@ -1,13 +1,13 @@
-import React,{useState,useEffect} from 'react'
+import React,{useEffect,useContext} from 'react'
 import FriendsForm from "./FriendsForm"
-
-import AxiosWithAuth from "../utils/AxiosWithAuth"
+import {FriendListContext} from "../context"
 
 export default function FriendList() {
-    const [friendList , setFriendList] = useState([])
+    const {friendList,getFriends} = useContext(FriendListContext)
     useEffect(()=>{
-        AxiosWithAuth().get("/api/friends").then(res=>setFriendList(res.data)).catch(err=>console.log(err))
+        getFriends()
     },[])
+
     return (
         <div>
             <FriendsForm />

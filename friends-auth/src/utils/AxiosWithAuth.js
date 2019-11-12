@@ -3,7 +3,7 @@ import axios from "axios"
 const token = localStorage.getItem("token")
 
 const AxiosWithAuth = () => axios.create({
-    baseURL: "http://localhost:5000/",
+    baseURL: "http://localhost:7000/",
     headers: {
         Authorization: token
     }

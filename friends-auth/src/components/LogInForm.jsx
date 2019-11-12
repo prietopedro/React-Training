@@ -6,14 +6,19 @@ export default function LogInForm({history}) {
         username: "",
         password: ""
     }
-    const token = localStorage.getItem("token")
+    let token = localStorage.getItem("token")
     useEffect(()=>{
-        return token ? history.push("/FriendList") : null
+        if(token){
+            history.push("/FriendList")
+        }
     },[token])
+
     const [formValues,setFormValues] = useState(values)
+
     const handleChange = e => {
         setFormValues({...formValues, [e.target.name]:e.target.value})
     }
+
     const submitForm = e => {
         e.preventDefault();
         AxiosWithAuth().post("/api/login",formValues).then(res=>localStorage.setItem("token",res.data.payload)).catch(err=>console.log(err))
