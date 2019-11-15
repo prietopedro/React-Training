@@ -19,6 +19,7 @@ const Bubbles = ({ colors }) => {
     setPrevR(e.target.style.r)
     e.target.style.r = "100"
     e.target.style.fill = "black"
+    console.log(e.target)
   }
   const onMouseLeaveHandler = (e) => {
     e.target.style.fill = prevColor

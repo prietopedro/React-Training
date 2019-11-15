@@ -21,14 +21,9 @@ const Login = (props) => {
     axios.post("http://localhost:5000/api/login",formValues)
     .then(res=>{
       localStorage.setItem("token",res.data.payload);
-      setToken(res.data.payload)
+      window.location.reload()
       })
-    .then(()=>{
-      if(token){
-        props.history.push("/BubblePage")
-      }
-    }
-    )
+    .then(()=>setToken(localStorage.getItem("token")))
     .catch(err=>console.log(err.message))
   }
   return (

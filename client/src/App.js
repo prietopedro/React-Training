@@ -8,10 +8,11 @@ import BubblePage from "./components/BubblePage"
 import "./styles.scss";
 
 function App() {
+  const [token,setToken] = useState(localStorage.getItem("token"))
   return (
     <Router>
       <div className="App">
-        <Route exact path="/" component={Login} />
+        <Route exact path="/" render={(props) => (!token) ? <Login {...props}/> : <Redirect to="BubblePage" />} />
         {/* 
           Build a PrivateRoute component that will 
           display BubblePage when you're authenticated 
