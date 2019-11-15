@@ -17,8 +17,8 @@ const Bubbles = ({ colors }) => {
   const onMouseEnterHandler = (e) => {
     setPrevColor(e.target.style.fill)
     setPrevR(e.target.style.r)
-    e.target.style.fill = "red"
-    e.target.style.r = "10"
+    e.target.style.r = "100"
+    e.target.style.fill = "black"
   }
   const onMouseLeaveHandler = (e) => {
     e.target.style.fill = prevColor
@@ -27,13 +27,13 @@ const Bubbles = ({ colors }) => {
   return (
     <div className="bubble-wrap">
       <p>bubbles</p>
-      <Svg width={400} height={400}>
+      <Svg width={800} height={800}>
         <Pack
           data={{
             children: bubbleData
           }}
           sum={datum => datum.value - 1}
-          size={[400, 800]}
+          size={[800, 800]}
           includeRoot={false}
           nodeEnter={d => ({ ...d, r: 700 })}
           animate
