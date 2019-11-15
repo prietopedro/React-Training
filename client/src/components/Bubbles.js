@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Pack } from "@potion/layout";
 import { Svg, Circle } from "@potion/element";
-import { Pattern } from '@potion/extra'
 
 const Bubbles = ({ colors }) => {
   const [bubbleData, setBubbleData] = useState([]);
+  const [prevColor , setPrevColor] = useState(null)
+  const [prevR , setPrevR] = useState(null)
   useEffect(() => {
     const generateBubbleData = colors.map((_, i) => ({
       value: Math.floor(Math.random() * (colors.length * 2)) + 1,
@@ -13,6 +14,16 @@ const Bubbles = ({ colors }) => {
     setBubbleData(generateBubbleData);
   }, [colors]);
 
+  const onMouseEnterHandler = (e) => {
+    setPrevColor(e.target.style.fill)
+    setPrevR(e.target.style.r)
+    e.target.style.fill = "red"
+    e.target.style.r = "10"
+  }
+  const onMouseLeaveHandler = (e) => {
+    e.target.style.fill = prevColor
+    e.target.style.r = prevR
+  }
   return (
     <div className="bubble-wrap">
       <p>bubbles</p>
@@ -21,10 +32,10 @@ const Bubbles = ({ colors }) => {
           data={{
             children: bubbleData
           }}
-          sum={datum => datum.value}
-          size={[400, 400]}
+          sum={datum => datum.value - 1}
+          size={[400, 800]}
           includeRoot={false}
-          nodeEnter={d => ({ ...d, r: 0 })}
+          nodeEnter={d => ({ ...d, r: 700 })}
           animate
         >
           {nodes =>
@@ -33,10 +44,12 @@ const Bubbles = ({ colors }) => {
                 if (i < colors.length) {
                   return (
                     <Circle
+                      onMouseEnter={onMouseEnterHandler}
+                      onMouseLeave={onMouseLeaveHandler}
                       key={key}
                       cx={x}
                       cy={y}
-                      r={50}
+                      r={r}
                       fill={colors[i].code.hex}
                     />
                   );
