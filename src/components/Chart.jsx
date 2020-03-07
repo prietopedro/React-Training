@@ -9,6 +9,8 @@ import {
   Tooltip
 } from "recharts";
 
+import {Link} from "react-router-dom"
+
 const Chart = ({ sparklineData }) => {
   const formattedData = sparklineData
     .map((price, idx) => {
