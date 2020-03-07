@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
 import {BrowserRouter as Router, Route,Switch} from "react-router-dom"
-import Coin from "./components/Coin.jsx"
+import Coin from "./components/Coin.jsx.js"
 
 import Charts from "./components/Charts";
 import Navbar from "./components/Navbar";
