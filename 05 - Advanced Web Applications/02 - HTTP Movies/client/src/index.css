@@ -71,6 +71,7 @@ body {
   background-color: lightskyblue;
 }
 
+<<<<<<< HEAD:02 - Single Page Applications/02 - Router Movies/client/src/index.css
 a{
   text-decoration: none;
   color: #333;
@@ -79,3 +80,9 @@ a{
 .active{
   color: red;
 }
+=======
+.movie-warning {
+  color: red;
+  text-align: center;
+}
+>>>>>>> react31:02 - HTTP Movies/client/src/index.css
