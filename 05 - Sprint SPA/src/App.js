@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from "react";
-import Header from "./components/Header.js";
+import Header from "./components/Header.js.js";
 import WelcomePage from "./components/WelcomePage";
 import {Route} from 'react-router-dom';
 import CharacterList from "./components/CharacterList";
