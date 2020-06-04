@@ -6,7 +6,7 @@ These are code alongs of tutorials I have watched in the past. Some projects mig
 
 I recently combined all projects into this single repo to make my github profile easier to navigate.
 Unfortunately Git does not allow to clone a subdirectory and forces you to clone the entire repository.
-If you do decide to clone this here are the steps to run a specific project
+If you do decide to clone this, here are the steps to run a specific project
 
 ## Projects
 

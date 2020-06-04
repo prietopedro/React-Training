@@ -6,7 +6,7 @@ These are daily projects that I completed throughout my Lambda School journey, m
 
 I recently combined all projects into this single repo to make my github profile easier to navigate.
 Unfortunately Git does not allow to clone a subdirectory and forces you to clone the entire repository.
-If you do decide to clone this here are the steps to run a specific project
+If you do decide to clone this, here are the steps to run a specific project
 
 - **git clone** https://github.com/prietop97/React-Training.git
 - **cd Lambda \ School\ Daily\ Projects/05\ -\ Advanced\ Web\ Applications/[Project-Name]**
